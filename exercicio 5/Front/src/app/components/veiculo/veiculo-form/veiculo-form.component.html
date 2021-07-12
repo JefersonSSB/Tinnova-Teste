@@ -1,0 +1,52 @@
+<mat-card>
+    <form [formGroup]="formulario">
+
+        <mat-form-field class="margin" appearance="outline">
+            <mat-label>Veiculo</mat-label>
+            <input matInput formControlName="veiculo" type="text" required>
+        </mat-form-field>
+
+        <mat-form-field class="margin" appearance="outline">
+            <mat-label>Marca</mat-label>
+            <mat-select matInput formControlName="marca" type="text" required>
+                <mat-option value="Toyota">Toyota</mat-option>
+                <mat-option value="Volkswagen">Volkswagen</mat-option>
+                <mat-option value="Ford">Ford</mat-option>
+                <mat-option value="Honda">Honda</mat-option>
+                <mat-option value="Hyundai">Hyundai</mat-option>
+                <mat-option value="Chevrolet">Chevrolet</mat-option>
+                <mat-option value="Kia">Kia</mat-option>
+                <mat-option value="Nissan">Nissan</mat-option>
+                <mat-option value="Mercedes-Benz">Mercedes-Benz</mat-option>
+                <mat-option value="BMW">BMW</mat-option>
+                <mat-option value="Tesla">Tesla</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="margin" appearance="outline">
+            <mat-label>Ano</mat-label>
+            <input matInput formControlName="ano" type="text" required>
+        </mat-form-field>
+
+        <mat-form-field class="margin" appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="descricao" type="text" required>
+        </mat-form-field>
+
+
+        <mat-form-field class="margin" appearance="outline">
+            <mat-label>Vendido</mat-label>
+            <mat-select matInput formControlName="vendido" type="text" required>
+                <mat-option [value]=true>Sim</mat-option>
+                <mat-option [value]=false>Não</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </form>
+    <button mat-raised-button (click)="createVeiculo()" color="primary">
+        Salvar
+    </button>
+    <button mat-raised-button (click)="cancel()">
+        Cancelar
+    </button>
+</mat-card>

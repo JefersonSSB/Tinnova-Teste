@@ -1,0 +1,45 @@
+<table mat-table matSort [dataSource]='dataSource' class="mat-elevation-z4">
+
+
+    <ng-container matColumnDef="veiculo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Veiculo </th>
+        <td mat-cell *matCellDef="let row"> {{row.veiculo}} </td>
+    </ng-container>
+
+    <!-- Email Column -->
+    <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Marca </th>
+        <td mat-cell *matCellDef="let row"> {{row.marca}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ano">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ano </th>
+        <td mat-cell *matCellDef="let row"> {{row.ano}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descricao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descrição </th>
+        <td mat-cell *matCellDef="let row"> {{row.descricao}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="vendido">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendido </th>
+        <td mat-cell *matCellDef="let row"> {{trasformaBooleano(row.vendido)}} </td>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="primary" routerLink="/veiculo/update/{{ row._id }}" class="edit">
+                <i class="material-icons">edit</i>
+            </button>
+            <button mat-icon-button color="warn" (click)="deleteVeiculo(row._id)" class="delete">
+                <i class="material-icons">delete</i>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
