@@ -2,7 +2,7 @@
 
 ## Detalhes da Implementação
 
-A implementação dos desafios foi feito utilizando a NodeJs.
+A implementação dos desafios foi feito utilizando NodeJs .
 
 ### Desafios:
 
@@ -10,4 +10,6 @@ A implementação dos desafios foi feito utilizando a NodeJs.
 * Desafio 2: Algoritmo de Ordenação Bubble Sort **(exercicio 2)**.
 * Desafio 3: Fatorial **(exercicio 3)**.
 * Desafio 4: Soma dos múltiplos de 3 e 5 **(exercicio 4)**.
-* Desafio 5: Construção de uma API RESTful + SPA para cadastro de Veículos.
+* Desafio 5: Construção de uma API RESTful (NodeJs) + SPA para cadastro de Veículos(Angular).
+
+
