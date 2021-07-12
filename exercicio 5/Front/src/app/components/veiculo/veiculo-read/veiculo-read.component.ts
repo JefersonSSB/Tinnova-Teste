@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class VeiculoReadComponent implements OnInit {
 
+  key: string;
+  value: string;
+
   veiculos: Veiculo[];
   displayedColumns = ['veiculo', 'marca', 'ano', 'descricao', 'vendido', 'action']
   dataSource = null;
@@ -25,7 +28,6 @@ export class VeiculoReadComponent implements OnInit {
     this.veiculoService.get().subscribe(veiculos => {
       this.veiculos = veiculos;
       this.dataSource.data = veiculos;
-      console.log(this.veiculos);
     })
   }
 
@@ -34,6 +36,26 @@ export class VeiculoReadComponent implements OnInit {
       this.veiculoService.showMessage("Veiculo Deletado")
       this.ngOnInit();
     });
+  }
+
+  buscarVeiculo() {
+    if (this.key === 'todos') {
+      this.ngOnInit();
+    }
+    else {
+      if (this.key === 'vendido') {
+        if (this.value === 'Sim') {
+          this.value = 'true';
+        }
+        else {
+          this.value = 'false';
+        }
+      }
+      this.veiculoService.find(this.key, this.value).subscribe(veiculos => {
+        this.veiculos = veiculos;
+        this.dataSource.data = veiculos;
+      })
+    }
   }
 
   trasformaBooleano(bool) {

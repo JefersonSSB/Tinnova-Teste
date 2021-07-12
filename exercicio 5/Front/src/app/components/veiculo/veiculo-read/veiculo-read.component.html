@@ -1,3 +1,27 @@
+<mat-card>
+    Buscar por
+    <mat-form-field class="margin" appearance="outline">
+        <mat-select [(ngModel)]="key" matInput type="text" required>
+            <mat-option value="todos">Todos</mat-option>
+            <mat-option value="veiculo">Veiculo</mat-option>
+            <mat-option value="marca">Marca</mat-option>
+            <mat-option value="ano">Ano</mat-option>
+            <mat-option value="descricao">Descrição</mat-option>
+            <mat-option value="vendido">Vendido</mat-option>
+            <mat-option value="lastweek">Última Semana</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="margin" appearance="outline">
+        <input matInput [(ngModel)]="value" type="text" required>
+    </mat-form-field>
+
+    <button mat-mini-fab color="primary" (click)="buscarVeiculo()">
+        <i class="material-icons">search</i>
+    </button>
+    <strong>Total de Veiculos: {{veiculos?veiculos.length:0}}</strong>
+</mat-card>
+
+
 <table mat-table matSort [dataSource]='dataSource' class="mat-elevation-z4">
 
 

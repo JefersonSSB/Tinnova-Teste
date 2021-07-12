@@ -10,6 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 })
 export class VeiculoService {
     baseUrl = "http://localhost:3000/veiculos";
+    baseUrlBuscar = "http://localhost:3000/buscarveiculos";
 
     constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
@@ -45,12 +46,20 @@ export class VeiculoService {
         );
     }
 
+    find(key: string, value: string): Observable<Veiculo[]> {
+        return this.http.get<Veiculo>(`${this.baseUrlBuscar}?key=${key}&value=${value}`).pipe(
+            map(obj => obj),
+            catchError(e => this.errorHandler(e))
+        );
+    }
+
     put(veiculo: Veiculo, id: string): Observable<Veiculo> {
         return this.http.put<Veiculo>(`${this.baseUrl}/${id}`, veiculo).pipe(
             map(obj => obj),
             catchError(e => this.errorHandler(e))
         );
     }
+
     delete(id: number): Observable<Veiculo> {
         return this.http.delete<Veiculo>(`${this.baseUrl}/${id}`).pipe(
             map(obj => obj),

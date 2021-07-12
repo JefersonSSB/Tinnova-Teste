@@ -28,7 +28,23 @@ exports.getById = async (req, res, next) => {
   }
 }
 
-
+exports.find = async (req, res, next) => {
+  try {
+    const key = req.query.key;
+    const value = req.query.value;
+    if(key==='lastweek'){
+      var data = await repository.findLastWeek();
+    }
+    else{
+      var data = await repository.find(key, value);
+    }
+    res.status(200).send(data);
+  } catch (e) {
+    res.status(500).send({
+      message: 'Falha ao processar sua requisição'
+    });
+  }
+}
 
 
 exports.post = async (req, res, next) => {
@@ -50,6 +66,19 @@ exports.post = async (req, res, next) => {
 exports.put = async (req, res, next) => {
   try {
     await repository.update(req.params.id, req.body);
+    res.status(200).send({
+      message: 'Veiculo atualizado com sucesso!'
+    });
+  } catch (e) {
+    res.status(500).send({
+      message: 'Falha ao processar sua requisição'
+    });
+  }
+};
+
+exports.put = async (req, res, next) => {
+  try {
+    await repository.updatePatch(req.params.id, req.body);
     res.status(200).send({
       message: 'Veiculo atualizado com sucesso!'
     });

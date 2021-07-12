@@ -7,12 +7,21 @@ exports.get = async () => {
     return res;
 }
 
+exports.find = async (key,value) => {
+    const res = await Product.find().where(key).equals(value);
+    return res;
+}
+
+exports.findLastWeek = async () => {
+    const res = await Product.find().where('created').lt(Date.now()-7);
+    return res;
+}
+
 exports.getById = async (id) => {
     const res = await Product
         .findById(id);
     return res;
 }
-
 
 exports.create = async (data) => {
     var product = new Product(data);
@@ -29,6 +38,15 @@ exports.update = async (id, data) => {
                 descricao: data.descricao,
                 vendido: data.vendido,
                 updated: Date.now() 
+            }
+        });
+}
+
+exports.updatePatch = async (id, data) => {
+    await Product
+        .findByIdAndUpdate(id, {
+            $set: {
+                data
             }
         });
 }
