@@ -76,7 +76,7 @@ exports.put = async (req, res, next) => {
   }
 };
 
-exports.put = async (req, res, next) => {
+exports.patch = async (req, res, next) => {
   try {
     await repository.updatePatch(req.params.id, req.body);
     res.status(200).send({
